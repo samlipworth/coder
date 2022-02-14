@@ -118,7 +118,7 @@ classify.data.table <- function(
   # Codes without class (treated separately for speed): FALSE matrix
   i_nocl           <- !is.na(codified$code) &
                       !grepl(paste(cc[[attr(cc, "regexpr")]],
-                                   collapse = "|"), codified$code)
+                                   collapse = "|"), codified$code,perl=T)
   i_na             <- is.na(codified$code)
   nocl             <- matrix(FALSE, sum(i_nocl), nrow(cc))
   rownames(nocl)   <- codified[[id]][i_nocl]
